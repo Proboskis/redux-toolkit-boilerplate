@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import fakeReducer from './fakeReducer';
+import booksReducer from './reducers/bookReducer';
 
-// fake reducer will be replaced when the real reducers are created
 const store = configureStore({
-    reducer: { fakeReducer },
+    reducer: { books: booksReducer },
 });
 
 export default store;
