@@ -1,4 +1,29 @@
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteBook} from "../../store/actions/bookActions";
+
 const Library = () => {
+    const dispatch = useDispatch();
+    const deleteBookHandler = (id) => {
+        dispatch(deleteBook(id));
+    };
+
+    const bookList = useSelector((state) => state.books.books);
+    const bookTable = bookList.map((book) => (
+        <tr>
+            <td>{book.title}</td>
+            <td>{book.author}</td>
+            <td>{book.rating}</td>
+            <td>
+                <button
+                    className='delete'
+                    onClick={() => deleteBookHandler({ id: book.id })}
+                >
+                    x
+                </button>
+            </td>
+        </tr>
+    ));
+
     return (
         <div className='library'>
             <h2>Library</h2>
@@ -12,22 +37,7 @@ const Library = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Dune</td>
-                        <td>F. Herbert</td>
-                        <td>10</td>
-                        <td>
-                            <button className='delete'>x</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>The Return of The King</td>
-                        <td>J.R.R. Tolkien</td>
-                        <td>10</td>
-                        <td>
-                            <button className='delete'>x</button>
-                        </td>
-                    </tr>
+                {bookTable}
                 </tbody>
             </table>
         </div>
