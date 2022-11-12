@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addBook} from "../../store/slices/bookSlice";
-import {nanoid} from "nanoid";
 
 const AddBook = () => {
     const [title, setTitle] = useState('');
@@ -12,7 +11,7 @@ const AddBook = () => {
 
     const addBookHandler = (event) => {
         event.preventDefault();
-        dispatch(addBook({ title, author, rating, id: nanoid() }));
+        dispatch(addBook({title, author, rating}));
     };
 
     return (
