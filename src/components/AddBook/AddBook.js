@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {addBook} from "../../store/actions/bookActions";
+import {addBook} from "../../store/slices/bookSlice";
 import {nanoid} from "nanoid";
 
 const AddBook = () => {
